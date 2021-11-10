@@ -1,0 +1,20 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-prismjs": "^2.0.0-beta.27",
+    "@vuepress/plugin-shiki": "^2.0.0-beta.27",
+    "i": "^0.3.7",
+    "vuepress": "^2.0.0-beta.27"
+  },
+  "scripts": {
+    "website:dev": "vuepress dev src",
+    "website:build": "vuepress build src"
+  },
+  "dependencies": {
+    "highlight.js": "^11.3.1",
+    "vuepress-highlightjs": "file:highlightjs"
+  }
+}
