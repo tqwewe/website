@@ -31,7 +31,7 @@ authors = []
 [commit_types]
 ```
 
-## Creating a new repository
+### Create a new repository
 
 ```bash
 mkdir my_repo && cd my_repo
@@ -47,7 +47,7 @@ Optionally you can specify the target path of the repository you want to create 
 cog init my_repo
 ```
 
-## Initializing an existing repo
+### Initialize an existing repo
 
 Running `cog init` on an existing repository will just create a template configuration without creating any commit :
 
@@ -56,7 +56,7 @@ git init my_repo && cd my_repo
 cog init
 ```
 
-```
+```bash
 ❯ git status
 On branch master
 Changes to be committed:
@@ -64,26 +64,22 @@ Changes to be committed:
 	new file:   cog.toml
 ```
 
-# Managing commit history
-
-`cog` as several subcommands to examine and manipulate your commit history.
-
-## Validate repository history compliance with the specification
+## Check commit history
 
 Running `cog check` will check your commit history against the conventional commit specification :
 
-```
+```bash
 ❯ cog check
 No errored commits
 ```
 
 Let us create an invalid commit :
-```sh
+```bash
 git commit -m "Your Mother Was A Hamster, And Your Father Smelt Of Elderberries"
 ```
 
 And check our commit history again :
-```
+```bash
 ❯ cog check
 Error: ERROR - Your Mother Was A Hamster, And Your Father Smelt Of Elderberries - (c2bb56)
 	cause: Missing commit type separator `:
@@ -115,8 +111,7 @@ Using `cog edit` will modify your commit history and change the commit SHA of ed
 and their child.
 :::
 
-## Conventional commits git log
-
+## Conventional commit git log
 
 `cog log` is like `git log` but it displays additional conventional commit information, such as commit scope,
 commit type etc.
@@ -134,11 +129,11 @@ You can also filter the log content with the following flags (`cog log --help`) 
 
 Those flag can be combined to achieve complex search in your commit history :
 
-```sh
+```bash
 cog log --author "Paul Delafosse" "Mike Lubinets" --type feat --scope cli --no-error
 ```
 
-### Changelog summary
+## Changelogs 
 
 There are two ways to generate changelog with `cog` :
 
@@ -167,7 +162,7 @@ There are two ways to generate changelog with `cog` :
 
 ::: tip
 You can specify a custom changelog range or tag like so :
-```
+```bash
 # Display the changelog between `^1` and `2.0.0`
 cog changelog --at 2.0.0
 
@@ -181,7 +176,7 @@ cog changelog 8806a5..1.0.0
 :::
 
 
-# Automatic versioning
+## Automatic versioning
 
 The purpose of conventional commits is to be able to bump your project version and changelog
 automatically. Cocogitto allow you to do this with the `cog bump` command.
@@ -207,7 +202,7 @@ Assuming we are working on the following git repository :
 ```
 
 Let us now create a version :
-```
+```bash
 ❯ cog bump --auto
 Found feature commit caef0f, bumping to 0.1.0
 Skipping irrelevant commit 025cc0 with type : docs
@@ -264,7 +259,7 @@ You need to run `cog bump` with one of the following flags :
 
 You can also create pre-release version by adding the `--pre` flag to the bump command :
 
-```shell script
+```bash
 cog bump --major --pre "beta.1"
 ```
 
@@ -285,9 +280,9 @@ You might also need to adjust `changelog_path` in `cog.toml`.
 i.e. it will never do an auto bump to the `1.0.0` version, even if there are breaking changes.
 That way, you can keep adding features in the development stage and decide yourself, when your API is stable.
 
-## Bump hooks
+### Bump hooks
 
-### Pre bump hooks
+#### Pre bump hooks
 
 Creating git tag automatically is great but sometimes you need to edit some file with the new version number,
 or perform some additional checks before doing so.
@@ -306,7 +301,7 @@ pre_bump_hooks = [
 When running `cog bump` these command will be run before creating the version commit.
 Assuming we are bumping to `1.1.0`, the `{{version}}` alias will be replaced with `1.1.0`.
 
-### Post bump hooks
+#### Post bump hooks
 
 You can tell `cog` to run commands after the bump.
 
@@ -345,30 +340,30 @@ As you can see we are bumping the manifest using a small DSL. It as only a few k
 - followed by any number of `+{amount}{kind}` (exemple: `version+2major+1patch`)
 - ended by any alphanumeric character (SemVer additional labels for pre-release and build metadata), here `-SNAPSHOT`.
 
-### Builtin git hooks
+## Builtin git hooks
 
 To protect your commit history, and your git remote, cog have builtins
 [git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
 
 You can install them all by running :
 
-```sh
+```bash
 cog install-hook all
 ```
 
 Or one by one, specifying the hook name :
 
-1. Pre-push hook
+**Pre-push hook:**
 
-   Enabling this hook will run `cog check` before pushing to remote.
-    ```
-    cog install-hooks pre-push
-    ```
+Enabling this hook will run `cog check` before pushing to remote.
+```bash
+cog install-hooks pre-push
+```
 
-2. Pre-commit hook
+**Pre-commit hook:**
 
-   Enabling this hook will run `cog verify` before creating a new commit.
+Enabling this hook will run `cog verify` before creating a new commit.
 
-    ```
-    cog install-hook pre-commit
-    ```
+ ```bash
+ cog install-hook pre-commit
+```

@@ -40,7 +40,7 @@ git commit -m "add awesome feature"
 Using `coco` should prevent a wide range of error in your conventional commit message. But if you still made a mistake
 `coco` will display an error explaining what went wrong :
 
-```
+```bash
 ❯ coco feat "add ability to parse arrays" "sco(pe"
 Error: A scope value cannot contains inner parenthesis
 

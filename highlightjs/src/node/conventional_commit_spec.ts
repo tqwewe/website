@@ -1,5 +1,7 @@
+import {HLJSApi} from "highlight.js";
+
 /** @type LanguageFn */
-export default function (hljs) {
+export default function (hljs: any) {
     const regex = hljs.regex;
     const VAR = {};
     const BRACED_VAR = {
@@ -58,7 +60,7 @@ export default function (hljs) {
 
     return {
         name: 'Conventional commit',
-        aliases: ['conventional commit'],
+        aliases: ['conventional_commit'],
         keywords: {
             keyword: KEYWORDS,
             literal: OPTIONAL,
