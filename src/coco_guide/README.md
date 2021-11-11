@@ -121,8 +121,6 @@ By default `coco` supports standard conventional commits type `feat`, `fix` plus
 `cog.toml` in your repository root directory : 
 
 ```toml
-# An optional list of additional allowed commit type
-# `coco {commit_type}` commit command will be generated at runtime
 [commit_types]
 hotfix = { changelog_title = "Hotfixes" }
 release = { changelog_title = "Releases" }
