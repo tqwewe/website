@@ -257,6 +257,8 @@ authors = [
 If you are not happy with the default you can create your own changelog template. 
 Internally cocogitto uses [tera](https://tera.netlify.app/) template engine to render changelogs. 
 
+Also see [template reference](../template).
+
 **Example:**
 
 ```tera

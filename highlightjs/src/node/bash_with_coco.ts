@@ -77,6 +77,8 @@ export default function(hljs: any) {
     };
 
     const COMMANDS = [
+        "cargo",
+        "yay",
         "coco",
         "cog",
         "git",
