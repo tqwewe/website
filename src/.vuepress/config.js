@@ -41,6 +41,10 @@ module.exports = {
             {
                 link: '/config/',
                 text: 'Configuration reference',
+            },
+            {
+                link: '/template/',
+                text: 'Template reference',
             }
         ],
         // sidebar object
@@ -57,11 +61,13 @@ module.exports = {
             {
                 link: '/config/',
                 text: 'Configuration reference',
+            },
+            {
+                link: '/template/',
+                text: 'Changelog template reference',
             }
         ],
-        /**
-         * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-         */
+
         plugins: [
             '@vuepress/plugin-back-to-top',
             '@vuepress/plugin-medium-zoom',
