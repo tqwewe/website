@@ -1,0 +1,28 @@
+name: Conventional commit check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Conventional commit check
+        uses: oknozor/cocogitto-action@v1
+        with:
+          git-user: 'github-actions'
+          git-user-email: 'github-actions@github.com'
+
+      - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_SCRIPT: yarn && yarn website:build
+          BUILD_DIR: src/.vuepress/dist/

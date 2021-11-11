@@ -5,7 +5,7 @@ const { path } = require('@vuepress/utils')
 module.exports = {
     title: 'Cocogitto',
     docsDir: 'docs',
-    base: "/cocogitto/",
+    base: "/",
     description: description,
     markdown: {
         code: {
@@ -13,7 +13,9 @@ module.exports = {
         }
     },
 
-    plugins: [ highlightjsPlugin ],
+    plugins: [
+        highlightjsPlugin,
+    ],
 
     head: [
         ['meta', {name: 'theme-color', content: '#f86b6a'}],
@@ -25,10 +27,8 @@ module.exports = {
 
     themeConfig: {
         logo: 'logo.png',
-        repo: 'https://github.com/oknozor/cocogitto',
-        editLinks: false,
-        editLinkText: '',
-        lastUpdated: false,
+        repo: 'https://github.com/cocogitto/cocogitto',
+        lastUpdated: true,
         navbar: [
             {
                 link: '/coco_guide/',
