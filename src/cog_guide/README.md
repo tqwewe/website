@@ -559,32 +559,3 @@ pre_bump_hooks = [
 ]
 ```
 :::
-
-
-## Builtin git hooks
-
-To protect your commit history, and your git remote, cog have builtins
-[git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
-
-You can install them all by running :
-
-```bash
-cog install-hook all
-```
-
-Or one by one, specifying the hook name :
-
-**Pre-push hook:**
-
-Enabling this hook will run `cog check` before pushing to remote.
-```bash
-cog install-hooks pre-push
-```
-
-**Pre-commit hook:**
-
-Enabling this hook will run `cog verify` before creating a new commit.
-
- ```bash
- cog install-hook pre-commit
-```

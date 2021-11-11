@@ -128,3 +128,62 @@ release = { changelog_title = "Releases" }
 
 The above config would generate a `coco hotfix` and `coco release` subcommandsg following the same structure as the default ones. 
 
+## Built-in git hooks
+
+To protect your commit history, and your git remote, `cog` have builtins
+[git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks).
+
+You can install them all by running :
+
+```bash
+cog install-hook all
+```
+
+Or one by one, specifying the hook name :
+
+**Pre-push hook:**
+
+Enabling this hook will run `cog check` before pushing to remote.
+```bash
+cog install-hooks pre-push
+```
+
+**Pre-commit hook:**
+
+Enabling this hook will run `cog verify` before creating a new commit.
+
+ ```bash
+ cog install-hook pre-commit
+```
+
+::: warning
+This hooks will apply on standard git commit as well. 
+If you need to bypass them use the `--no-verify` flag.
+
+```bash
+git commit -m "WIP" --no-verify
+```
+
+Also be aware that the pre-commit hook might break so git features such as auto fixup aliases. 
+If you use those you probably want to configure only the pre-push hook.
+:::
+
+## Sanbox
+
+`cog verify` check an arbitrary input string against the conventional commit specification. 
+It will not create any commit. 
+
+**Example:** 
+```bash
+❯ cog verify "Your Mother Was A Hamster, And Your Father Smelt Of Elderberries"
+Error: Missing commit type separator `:`
+
+Caused by:
+     --> 1:5
+      |
+    1 | Your Mother Was A Hamster, And Your Father Smelt Of Elderberries
+      |     ^---
+      |
+      = expected scope or type_separator
+```
+
