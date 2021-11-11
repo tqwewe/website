@@ -8,7 +8,6 @@
 
 <script>
 import Layout from '@vuepress/theme-default/lib/client/layouts/Layout.vue'
-import 'highlight.js/styles/base16/solarized-dark.css';
 
 export default {
   components: {

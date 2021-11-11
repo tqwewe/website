@@ -83,7 +83,7 @@ of choice.
 
 **Example :**
 
-```text:line-numbers
+```editor:line-numbers
 # Editing commit c2bb56b93821ff34282f322be4d2231f53b9ada8
 # Replace this message with a conventional commit compliant one
 # Save and exit to edit the next errored commit

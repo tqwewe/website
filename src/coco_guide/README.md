@@ -82,7 +82,7 @@ coco refactor -e -B "drop support for Node 6" runtime
 
 This would open the following commit message template in your `$EDITOR` of choice : 
 
-```text:line-numbers
+```editor:line-numbers
 # Enter the commit message for your changes.
 # Lines starting with # will be ignored, and empty body/footer are allowed.
 # Once you are done, save the changes and exit the editor.
