@@ -65,7 +65,7 @@ Errored commit: 097a12f9c124b7015afa8c9b0e0be95ac6db89ad <Paul Delafosse>
 
 
 ::: tip
-You can check your history, starting from the latest using `--from-latest-tag` or `-l` flag.  
+You can check your history, starting from the latest tag using `--from-latest-tag` or `-l` flag.  
 This is useful when your git repo started to use conventional commits from a certain point in history and you
 don't care about editing old commits.
 :::
@@ -81,10 +81,6 @@ Once you have spotted invalid commits you can quickly fix your commit history by
 This will perform an automatic rebase, cycling through each malformed commit, and letting you edit them with your `$EDITOR`
 of choice.
 
-::: tip
-You can use the `--from-latest-tag` or `-l` to edit only commits since the latest tag in your repository.
-:::
-
 **Example :**
 
 ```text:line-numbers
@@ -93,6 +89,10 @@ You can use the `--from-latest-tag` or `-l` to edit only commits since the lates
 # Save and exit to edit the next errored commit
 Your Mother Was A Hamster, And Your Father Smelt Of Elderberries
 ```
+
+::: tip
+You can use the `--from-latest-tag` or `-l` to edit only commits since the latest tag in your repository.
+:::
 
 ## Conventional commit log
 
@@ -121,30 +121,35 @@ cog log --author "Paul Delafosse" "Mike Lubinets" --type feat --scope cli --no-e
 
 ## Changelogs 
 
-There are two ways to generate changelog with `cog` :
+`cog changelog` can generate changelog automatically. 
 
-- To your repo `CHANGELOG.md` file with `cog bump` (see: [auto bump](src/coco_guide/versioning.mdde/versioning.md#auto-bump))
-- To stdout with `cog changelog`.
+Let's assume the following history : 
 
-    ```markdown
-    ❯ cog changelog
-    
-    ## 0.30.0..HEAD - 2020-09-30
-    
-    
-    ### Bug Fixes
-    
-    7f04a9 - fix ci cross build command bin args - Paul Delafosse
-    
-    ### Features
-    
-    fc7420 - move check edit to dedicated subcommand and fix rebase - Paul Delafosse
-    1028d0 - remove config commit on init existing repo - Paul Delafosse
-    
-    ### Refactoring
-    
-    d4aa61 - change config name to cog.toml - Paul Delafosse
-    ```
+```git
+* e3ff26a - (HEAD -> master) feat!: implement parser specification <Paul Delafosse>
+* 78dedea - feat: a commit <Paul Delafosse>
+* c361eea - feat: say hello to the world <Paul Delafosse>
+* 6d014b4 - chore: initial commit <Paul Delafosse>
+```
+
+Let us now get a changelog : 
+
+```markdown
+❯ cog changelog
+## 0.2.0 - 2021-11-10
+#### Features
+- **(hello)** say hello to the galaxy - (da4af95) - Paul Delafosse
+#### Refactoring
+- **(hello)** say hello to the martians - (22db158) - Paul Delafosse
+- - -
+## 0.1.0 - 2021-11-10
+#### Features
+- implement parser specification - (e3ff26a) - Paul Delafosse
+- a commit - (78dedea) - Paul Delafosse
+- say hello to the world - (c361eea) - Paul Delafosse
+```
+
+As you can see above a changelog is generated for each semver compliant tag.
 
 ::: tip
 You can specify a custom changelog range or tag like so :
@@ -152,14 +157,93 @@ You can specify a custom changelog range or tag like so :
 # Display the changelog between `^1` and `2.0.0`
 cog changelog --at 2.0.0
 
-# Display the changelog between `8806a5` and `HEAD`
-# Note that shortened git oid are not supported yet for this command
+# From `8806a5` to `1.0.0`
+cog changelog 8806a5..1.0.0
+
+# From `8806a5` to `HEAD`
 cog changelog 8806a55..
 
-# Display the changelog between `8806a5` and `1.0.0`
+# From first commit to `1.0.0`
 cog changelog 8806a5..1.0.0
 ```
 :::
+
+### Changelog templates
+
+A raw changelog is nice, but its even nicer to generate some links for repository hosted on git web platforms like GitHub. 
+To do this you can use the `--template` or `t` flag. Cocogitto comes with three pre built templates: 
+
+* `default`: the default template we saw in the previous section
+* `full_hash`: tailored for GitHub releases :
+  ```bash
+  cog changelog --template hull_hash
+  ```
+  
+  ```markdown
+    #### Features
+    - da4af95b223bb8942ffd289d1a62d930c80d7bbd - **(hello)** say hello to the galaxy - @oknozor
+    #### Refactoring
+    - 22db158f6c75aa5e9e7d4ed4a5b5af7b147453d7 - **(hello)** say hello to the martians - @oknozor
+    - - -
+    #### Features
+    - e3ff26a8247b9690ce241e9843eea595bcac8d06 - implement parser specification - @oknozor
+    - 78dedeaf5e7222cd338627f7ee982e271a3f9a4c - a commit - Paul Delafosse
+    - c361eeae958a0a28041aecfed10091dc0e6768dd - say hello to the world - @oknozor
+  ```
+  
+  Below is the changelog as rendered by github release, notice how the committer git signature as been replaced 
+  by their github username. To do that you need to tell cocogitto about your contributor's username in `cog.toml`:
+
+  ```toml
+    [changelog]
+    authors = [
+        { username = "oknozor", signature = "Paul Delafosse" }
+    ]
+    ```
+  <img :src="$withBase('github-release-changelog.png')" alt="Github release changelog screenshot">
+ 
+* `remote`: a template generating links for web platform hosted repository. 
+  ```bash
+  cog changelog --at 0.1.0 -t remote --remote github.com --owner oknozor --repository  cocogitto
+  ```
+
+  As you can see below a changelog is generated with full links to issues, tags, diff and usernames according
+  to the provided remote, owner and repository flags. 
+
+  ```markdown
+  ## [0.1.0](https://github.com/oknozor/cocogitto/compare/6d014b40f552fc1ad08f574fe33355175b0783ff..0.1.0) - 2021-11-11
+  #### Features
+  - implement parser specification - ([e3ff26a](https://github.com/oknozor/cocogitto/commit/e3ff26a8247b9690ce241e9843eea595bcac8d06)) - [@oknozor](https://github.com/oknozor)
+  - a commit - ([78dedea](https://github.com/oknozor/cocogitto/commit/78dedeaf5e7222cd338627f7ee982e271a3f9a4c)) - [@oknozor](https://github.com/oknozor)
+  - say hello to the world - ([c361eea](https://github.com/oknozor/cocogitto/commit/c361eeae958a0a28041aecfed10091dc0e6768dd)) - [@oknozor](https://github.com/oknozor)
+  ```
+  ::: tip 
+  To avoid typing the remote information and changelog template everytime you can set  some default values in `cog.toml`.
+  
+  Here is the config used by cocogitto itself. 
+  
+  ```toml
+  [changelog]
+  path = "CHANGELOG.md"
+  template = "remote"
+  remote = "github.com"
+  repository = "cocogitto"
+  owner = "cocogitto"
+  authors = [
+    { signature = "Paul Delafosse", username = "oknozor" },
+    { signature = "Jack Dorland", username = "jackdorland" },
+    { signature = "Mike Lubinets", username = "mersinvald" },
+    { signature = "Marcin Puc", username = "tranzystorek-io" },
+    { signature = "Renault Fernandes", username = "renaultfernandes" },
+    { signature = "Pieter Joost van de Sande", username = "pjvds" },
+    { signature = "orhun", username = "orhun" },
+    { signature = "Danny Tatom", username = "its-danny" },
+  ]
+  ```
+  :::
+
+
+
 
 
 ## Automatic versioning
@@ -179,27 +263,27 @@ The `bump` subcommand will execute the following steps :
 ### Auto bump
 
 Assuming we are working on the following git repository :
-```
-* (HEAD -> master) feat: another cool feature
-* docs: add some documentation
-* fix: fix ugly bug
-* feat: add awesome feature
-* chore: initial commit
+```git
+* e3ff26a - (HEAD -> master) feat: another cool feature
+* 78dedea - docs: add some documentation
+* c361eea - fix: fix ugly bug
+* 6d014b4 - feat: add awesome feature
+* 5854799 - chore: initial commit
 ```
 
 Let us now create a version :
 ```bash
 ❯ cog bump --auto
 Found feature commit caef0f, bumping to 0.1.0
-Skipping irrelevant commit 025cc0 with type : docs
+Skipping irrelevant commit 78dedea with type : docs
 Found bug fix commit e2af66, bumping to 0.1.1
 Found feature commit 1b87aa, bumping to 0.2.0
 Bumped version : 0.0.0 -> 0.2.0
 ```
 
 If we look again at our git log :
-```
-(HEAD -> master, tag: 0.2.0) chore(version): 0.2.0
+```git
+* 5854799 - (HEAD -> master, tag: 0.2.0) chore(version): 0.2.0
 ... 
 ```
 
@@ -353,3 +437,4 @@ Enabling this hook will run `cog verify` before creating a new commit.
  ```bash
  cog install-hook pre-commit
 ```
+]()

@@ -19,9 +19,10 @@ As described in the specification conventional commits messages are structured a
 All `coco` commit type subcommands follows the same structure :
 
 ```sh
-coco <type> <message> [optional scope] [optional body] [optional footer]
+coco [OPTIONS] <type> <message> [scope]
 ```
-You need to remember that `coco` commit scope comes after the commit description.
+
+Note that `coco` commit scope comes after the commit description.
 This allows using positional arguments instead of typing a scope flag every time.
 
 **Example :**
@@ -115,7 +116,7 @@ Github automatically link issues prefixed with a hash.
 
 ## Custom commit types
 
-By default `coco` supports standard conventional commits type `feat`, `fix` and the angular commit types `build`, `ci`, 
+By default `coco` supports standard conventional commits type `feat`, `fix` plus the angular commit types: `build`, `ci`, 
 `revert`, `docs`, `test`, `style`, `chore`, `perf`. If you want to use more types you can add them to a file named 
 `cog.toml` in your repository root directory : 
 

@@ -80,6 +80,7 @@ export default function(hljs: any) {
         "coco",
         "cog",
         "git",
+        "mkdir",
     ];
 
     return {

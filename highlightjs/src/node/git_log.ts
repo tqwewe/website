@@ -1,12 +1,9 @@
-import {HLJSApi} from "highlight.js";
-
 /** @type LanguageFn */
 export default function (hljs: any) {
     const regex = hljs.regex;
     const VAR = {};
-
     const BRACED_VAR = {
-        begin: /\$\{/,
+        begin: /\$\</,
         end: /\}/,
         contains: [
             "self",
@@ -30,46 +27,65 @@ export default function (hljs: any) {
         ]
     });
 
-    const ARITHMETIC = {
-        begin: /\$\(\(/,
-        end: /\)\)/,
-        contains: [
-            {begin: /\d+#[0-9a-f]+/, className: "number"},
-            hljs.NUMBER_MODE,
-            VAR
-        ]
-    };
-
     const KEYWORDS = [
-        "message",
+        "HEAD -> master",
     ];
 
-    const OPTIONAL = [
-        "optional",
-    ];
-
-
-
-    const MANDATORY = {
+    const TAG = {
         className: 'string',
-        begin: /</, end: />/,
+        begin: /\(/, end: /\)/,
         contains: [
             hljs.BACKSLASH_ESCAPE,
             VAR,
         ]
     };
 
+    const COMMIT_HASH = {
+        begin: /\*/,
+        end: /-/,
+        contains: [
+            "self",
+            {
+                className: 'title.function.invoke',
+                begin: /\s/,
+                end: /\s/,
+            }
+        ]
+    };
+
+    const COMMIT_TYPE = {
+        className: 'keyword',
+        begin: /\s(?:feat|fix|chore|docs|test|perf|ci|style)!?:/, end: /\s/,
+        contains: [
+            hljs.BACKSLASH_ESCAPE,
+            VAR,
+        ]
+    };
+
+    const AUTHOR = {
+        begin: /</,
+        end: />/,
+        className: 'meta',
+        contains: [
+            hljs.BACKSLASH_ESCAPE,
+            VAR,
+        ]
+    };
+
+
+
     return {
-        name: 'Conventional commit',
-        aliases: ['conventional_commit'],
+        name: 'Git log',
+        aliases: ['git_log'],
         keywords: {
             keyword: KEYWORDS,
-            literal: OPTIONAL,
             built_in: []
         },
         contains: [
-            MANDATORY,
-            ARITHMETIC,
+            COMMIT_TYPE,
+            COMMIT_HASH,
+            AUTHOR,
+            TAG,
             VAR
         ]
     };
