@@ -75,7 +75,7 @@ cog changelog --help
 ```
 
 Note that if you do not care about automatic release, changelog generation and just want
-to create conventional commit message you can jump to the [conventional commits section](src/coco_guide/conventional-commits.md)
+to create conventional commit message you can jump to the [conventional commits section](./coco_guide).
 
 ## Conventional commits  with `coco`
 
