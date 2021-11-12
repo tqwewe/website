@@ -20,7 +20,12 @@ module.exports = {
     head: [
         ['meta', {name: 'theme-color', content: '#f86b6a'}],
         ['meta', {name: 'apple-mobile-web-app-capable', content: 'yes'}],
-        ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}]
+        ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}],
+        ['meta', {property: 'og:title', content: 'Cocogitto'}],
+        ['meta', {property: 'og:image', content: 'https://docs.cocogitto.io/logo.png'}],
+        ['meta', {property: 'twitter:card', content: 'https://docs.cocogitto.io/logo.png'}],
+        ['meta', {property: 'og:description', content: 'The conventional commits toolbox'}],
+        ['meta', {property: 'og:width', content: '100'}],
     ],
 
     theme: path.resolve(__dirname, './theme'),
