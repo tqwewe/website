@@ -11,8 +11,8 @@ features:
   details: Automatically bump version and changelog generation with your own custom steps and workflows.
 - title: Release profiles
   details: Your branching model requires different steps for releases, prerelease, hotfix ? We got you covered
-- title: No dependency
-  details: Cocogitto has two standalone binary, the only system dependency is git
+- title: Depends only on libgit2
+  details: Cocogitto has two standalone binary, the only system dependency is libgit2
 - title: Conventional git log
   details: Search your commit history matching conventional commit items such as scope and commit type.
 - title: Enforce conventional commits via github actions
