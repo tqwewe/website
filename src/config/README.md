@@ -208,7 +208,7 @@ The config reference list all value that can be set in the `cog.toml` file at th
 
 - Type: `Array<Author>`
 - Optional: `true`
-- Description: A list of commit authors. Used to generate Markdown links in changelogs. Si
+- Description: A list of commit authors with their git signature and git platform username to generate Markdown links in changelogs.
 - Example:
     ```toml
       [changelog]
