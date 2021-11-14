@@ -5,6 +5,7 @@ const { path } = require('@vuepress/utils')
 module.exports = {
     title: 'Cocogitto',
     docsDir: 'docs',
+    editLink: true,
     base: "/",
     description: description,
     markdown: {
@@ -33,6 +34,8 @@ module.exports = {
     themeConfig: {
         logo: 'logo.png',
         repo: 'https://github.com/cocogitto/cocogitto',
+        docsRepo: 'https://github.com/cocogitto/website',
+        docsDir: 'src',
         lastUpdated: true,
         navbar: [
             {
