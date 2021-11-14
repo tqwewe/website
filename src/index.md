@@ -6,17 +6,17 @@ actionText: Getting Started →
 actionLink: /guide/
 features:
 - title: Verified commits️
-  details: Create conventional compliant commits at ease
+  details: Create conventional compliant commits at ease.
 - title: Automatic Version bump and changelog
-  details: Automatically bump version and changelog generation with your own custom steps and workflows.
+  details: Automatically bump version and generate changelog with your own custom steps and workflows.
 - title: Release profiles
-  details: Your branching model requires different steps for releases, prerelease, hotfix ? We got you covered
+  details: Your branching model requires different steps for releases, prerelease, hotfix ? We got you covered !
 - title: Depends only on libgit2
-  details: Cocogitto has two standalone binary, the only system dependency is libgit2
+  details: Cocogitto has two standalone binary, the only system dependency is libgit2.
 - title: Conventional git log
   details: Search your commit history matching conventional commit items such as scope and commit type.
 - title: Enforce conventional commits via github actions
-  details: Check your commit compliance on every push to the remote and create release from your CI pipeline
+  details: Check your commit compliance on every push to the remote and create release from your CI pipeline.
 footer: MIT Licensed | Copyright © 2020 Paul Delafosse
 ---
 
@@ -96,10 +96,13 @@ coco feat "implement the parser specification"
 Using `coco` while working on a project using conventional commits is less verbose than good old git cli and prevent
 typos and common mistake when writing conventional commit messages.
 
+See [Coco guide](./coco_guide) for more information.
+
+
 ## Repository management with `cog`
 
 While local commit are made with the `coco` binary, `cog` is meant to manage your repository both locally and in a
-CI context. For detailed information about each command see.
+CI context. For an in depth guide on how to use it see [Cog guide](./cog_guide).
 
 
 
