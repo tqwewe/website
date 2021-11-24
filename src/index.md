@@ -16,7 +16,7 @@ features:
 - title: Conventional git log
   details: Search your commit history matching conventional commit items such as scope and commit type.
 - title: Enforce conventional commits via github actions
-  details: Check your commit compliance on every push to the remote and create release from your CI pipeline.
+  details: Check your commit compliance on every push to the remote and create release from your CI pipeline or using our Github bot.
 footer: MIT Licensed | Copyright © 2020 Paul Delafosse
 ---
 
@@ -103,6 +103,25 @@ See [Coco guide](./coco_guide) for more information.
 
 While local commit are made with the `coco` binary, `cog` is meant to manage your repository both locally and in a
 CI context. For an in depth guide on how to use it see [Cog guide](./cog_guide).
+
+## GitHub integration
+
+### GitHub Action
+
+Anything you can do with `cog` and `coco` can be done in your CI pipeline with [cocogitto-action](https://github.com/cocogitto/cocogitto-action). 
+
+See [Github integration -> GitHub action](./ci_cd/#github-action) for more info.
+
+### GitHub Bot
+
+To help your contributors respect the specification [cocogitto-bot](https://github.com/apps/cocogitto-bot)
+can decorate your PR with conventional commits status checks.
+
+See [Github integration -> GitHub bot](./ci_cd/#github-action) for more info.
+
+
+
+
 
 
 

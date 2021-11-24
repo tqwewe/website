@@ -47,6 +47,10 @@ module.exports = {
                 text: 'Cog guide',
             },
             {
+                link: '/ci_cd/',
+                text: 'GitHub integration',
+            },
+            {
                 link: '/config/',
                 text: 'Configuration reference',
             },
@@ -65,6 +69,10 @@ module.exports = {
             {
                 link: '/cog_guide/',
                 text: 'Cog guide',
+            },
+            {
+                link: '/ci_cd/',
+                text: 'GitHub integration',
             },
             {
                 link: '/config/',

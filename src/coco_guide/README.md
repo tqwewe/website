@@ -103,7 +103,7 @@ Upon save a commit will be created with the body and footer typed.
 ::: tip
 There are to kind of footer separators in conventional commits : `token: message` and `token #message`.
 
-Github automatically link issues prefixed with a hash. 
+GitHub automatically link issues prefixed with a hash. 
 
 **Example:** 
 ```
