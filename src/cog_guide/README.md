@@ -198,7 +198,7 @@ cog changelog --template hull_hash
   - c361eeae958a0a28041aecfed10091dc0e6768dd - say hello to the world - @oknozor
 ```
   
-Below is the changelog as rendered by github release, notice how the committer git signature as been replaced 
+Below is the changelog as rendered by GitHub release, notice how the committer git signature as been replaced 
 by their github username. To do that you need to tell cocogitto about your contributor's username in `cog.toml`:
 
 ```toml

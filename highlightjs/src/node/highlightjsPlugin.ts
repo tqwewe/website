@@ -2,6 +2,7 @@ import type {Plugin} from '@vuepress/core'
 import hljs from 'highlight.js/lib/core';
 import toml from 'highlight.js/lib/languages/ini';
 import markdown from 'highlight.js/lib/languages/markdown';
+import yaml from 'highlight.js/lib/languages/yaml';
 import bash from './bash_with_coco';
 import git_log from './git_log';
 import conventionalCommit from './conventional_commit_spec';
@@ -15,6 +16,7 @@ hljs.registerLanguage('markdown', markdown);
 hljs.registerLanguage('git', git_log);
 hljs.registerLanguage('editor', editor);
 hljs.registerLanguage('tera', tera);
+hljs.registerLanguage('yaml', yaml);
 
 export const highlightjsPlugin: Plugin<{}> = () => ({
     name: '@vuepress/plugin-highlightjs',
