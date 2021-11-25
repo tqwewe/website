@@ -16,7 +16,7 @@ As described in the specification conventional commits messages are structured a
 [optional footer(s)]
 ```
 
-All `coco` commit type subcommands follows the same structure :
+All `coco` commit type subcommands follow the same structure :
 
 ```sh
 coco [OPTIONS] <type> <message> [scope]
@@ -38,7 +38,7 @@ git commit -m "add awesome feature"
 
 ## Helpful error messages
 
-Using `coco` should prevent a wide range of error in your conventional commit message. But if you still made a mistake
+Using `coco` should prevent a wide range of error in your conventional commit message. But if you still made a mistake,
 `coco` will display an error explaining what went wrong :
 
 ```bash
@@ -56,7 +56,7 @@ Caused by:
 
 ## Breaking changes
 
-All `coco` argument are positional except the optional `-B` flag used to create breaking changes commits :
+All `coco` arguments are positional except the optional `-B` flag used to create breaking changes commits :
 
 ```bash
 coco fix -B "add fix a nasty bug" cli
@@ -126,7 +126,7 @@ hotfix = { changelog_title = "Hotfixes" }
 release = { changelog_title = "Releases" }
 ```
 
-The above config would generate a `coco hotfix` and `coco release` subcommandsg following the same structure as the default ones. 
+The above config would generate a `coco hotfix` and `coco release` subcommands following the same structure as the default ones. 
 
 ## Built-in git hooks
 
@@ -164,13 +164,13 @@ If you need to bypass them use the `--no-verify` flag.
 git commit -m "WIP" --no-verify
 ```
 
-Also be aware that the pre-commit hook might break so git features such as auto fixup aliases. 
+Also be aware that the pre-commit hook might break some git features such as auto fixup aliases. 
 If you use those you probably want to configure only the pre-push hook.
 :::
 
-## Sanbox
+## Sandbox
 
-`cog verify` check an arbitrary input string against the conventional commit specification. 
+`cog verify` checks an arbitrary input string against the conventional commit specification. 
 It will not create any commit. 
 
 **Example:** 
