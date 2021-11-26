@@ -32,8 +32,9 @@ If you want to create the following commit : `feat: add awesome feature` :
 ```sh
 # With coco
 coco feat "add awesome feature"
+
 # With git
-git commit -m "add awesome feature"
+git commit -m "feat: add awesome feature"
 ```
 
 ## Helpful error messages
