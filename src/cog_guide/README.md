@@ -95,7 +95,7 @@ cog install-hooks pre-push
 Enabling this hook will run `cog verify` before creating a new commit.
 
  ```bash
- cog install-hook pre-commit
+ cog install-hook commit-msg
 ```
 
 ::: warning
@@ -105,9 +105,6 @@ If you need to bypass them use the `--no-verify` flag.
 ```bash
 git commit -m "WIP" --no-verify
 ```
-
-Also be aware that the pre-commit hook might break some git features such as auto fixup aliases.
-If you use those you probably want to configure only the pre-push hook.
 :::
 
 ## Sandbox
