@@ -54,13 +54,21 @@ And check our commit history again :
 ```bash
 ❯ cog check
 Error:
-Found 1 non compliant commits in c7bee8..HEAD:
+Found 1 non compliant commits in db5151..HEAD:
 
-_________________________________________________________
+________________________________________________________
 
-Errored commit: 097a12f9c124b7015afa8c9b0e0be95ac6db89ad <Paul Delafosse>
+Errored commit: db5151486a41f1b694fd8f90144dd02c87268988 <Paul Delafosse>
 	Commit message: 'Your Mother Was A Hamster, And Your Father Smelt Of Elderberries'
-	Cause: Missing commit type separator `:`
+	Error: Missing commit type separator `:`
+	
+	Caused by:
+	     --> 1:5
+	      |
+	    1 | Your Mother Was A Hamster, And Your Father Smelt Of Elderberries
+	      |     ^---
+	      |
+	      = expected scope or type_separator
 ```
 
 
