@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Conventional commits check
-        uses: oknozor/cocogitto-action@v1
+        uses: oknozor/cocogitto-action@v2
 ```
 
 ::: warning
@@ -36,7 +36,7 @@ full git history before running cocogitto-action.
 If you want the action to check only commits since the latest SemVer tag you can do the following: 
 ```yaml
   - name: Conventional commits check
-    uses: oknozor/cocogitto-action@main
+    uses: oknozor/cocogitto-action@v2
     with:
       check-latest-tag-only: true
 ```
@@ -47,7 +47,7 @@ To create a release with cocogitto-action simply add the `release` option :
 
 ```yaml
   - name: Semver release
-    uses: oknozor/cocogitto-action@main
+    uses: oknozor/cocogitto-action@v2
     with:
       release: true
       git-user: 'Cog Bot'
@@ -92,21 +92,26 @@ on:
 jobs:
   release:
     name: Perform release
-      - name: Semver release
-        uses: oknozor/cocogitto-action@main
-        id: release
-        with:
-          release: true
-          git-user: 'Cog Bot'
-          git-user-email: 'mycoolproject@org.org'
+        - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0
 
-      - name: Generate Changelog
-        run: cog changelog --at ${{ steps.release.outputs.version }} -t full_hash > GITHUB_CHANGELOG.md
+        - name: Cocogitto release
+          id: release
+          uses: oknozor/cocogitto-action@v2
+          with:
+            release: true
+              git-user: 'Cog Bot'
+              git-user-email: 'mycoolproject@org.org'
 
-      - name: Upload github release
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: GITHUB_CHANGELOG.md
+        - name: Generate Changelog
+          run: cog changelog --at ${{ steps.release.outputs.version }} -t full_hash > GITHUB_CHANGELOG.md
+
+        - name: Upload github release
+          uses: softprops/action-gh-release@v1
+          with:
+            body_path: GITHUB_CHANGELOG.md
+            tag_name: ${{ steps.release.outputs.version }}
 ```
 
 Also see:

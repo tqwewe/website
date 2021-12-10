@@ -1,9 +1,9 @@
 const {description} = require('../../package.json')
 const {highlightjsPlugin} = require('vuepress-highlightjs')
-const { path } = require('@vuepress/utils')
+const {path} = require('@vuepress/utils')
 
 module.exports = {
-    title: 'Cocogitto',
+    title: ' ',
     docsDir: 'docs',
     editLink: true,
     base: "/",
@@ -19,6 +19,7 @@ module.exports = {
     ],
 
     head: [
+        ['link', { rel: 'icon', href: '/favicon.png' }],
         ['meta', {name: 'theme-color', content: '#f86b6a'}],
         ['meta', {name: 'apple-mobile-web-app-capable', content: 'yes'}],
         ['meta', {name: 'apple-mobile-web-app-status-bar-style', content: 'black'}],
@@ -32,7 +33,7 @@ module.exports = {
     theme: path.resolve(__dirname, './theme'),
 
     themeConfig: {
-        logo: 'logo.png',
+        logo: 'logo_no_text.png',
         repo: 'https://github.com/cocogitto/cocogitto',
         docsRepo: 'https://github.com/cocogitto/website',
         docsDir: 'src',

@@ -1,4 +1,4 @@
-.idea
+.idea/
 static/processed_images
 **/node_modules
 src/.vuepress/.cache
