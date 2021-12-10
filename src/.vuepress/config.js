@@ -26,7 +26,7 @@ module.exports = {
         ['meta', {property: 'og:title', content: 'Cocogitto'}],
         ['meta', {property: 'og:image', content: 'https://docs.cocogitto.io/logo.png'}],
         ['meta', {property: 'twitter:card', content: 'https://docs.cocogitto.io/logo.png'}],
-        ['meta', {property: 'og:description', content: 'The conventional commits toolbox'}],
+        ['meta', {property: 'og:description', content: 'The Conventional Commits toolbox'}],
         ['meta', {property: 'og:width', content: '100'}],
     ],
 
