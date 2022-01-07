@@ -33,7 +33,7 @@ cargo install cocogitto
 ### Archlinux
 
 ```shell script
-yay -S cocogitto-bin
+pacman -S cocogitto
 ```
 
 ## Shell completions
