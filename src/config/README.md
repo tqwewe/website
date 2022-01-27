@@ -16,13 +16,13 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see: 
 
-    [Cog guide -> Tag prefix](../cog_guide/#tag-prefix)
+    [User guide -> Tag prefix](../guide/#tag-prefix)
 
 ### `commit_types`
 
 - Type: `Hashmap<String, ChangelogTitle>`
 - Optional: `true`
-- Description: extend the allowed commit types, creating a new `coco` command and allowing to generate changelog entries for the
+- Description: extend the allowed commit types, creating a new `cog commit` command and allowing to generate changelog entries for the
     given type. 
 - Example: 
     ```toml
@@ -32,7 +32,7 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see: 
     
-    [Coco guide -> Custom commit types](../coco_guide/#custom-commit-types)
+    [User guide -> Custom commit types](../guide/#custom-commit-types)
 
 ## Bump config
 
@@ -54,9 +54,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Automatic Versioning](../cog_guide/#auto-bump)
-    * [Cog guide -> Pre-bump hooks](../cog_guide/#pre-bump-hooks)
-    * [Cog guide -> Version DSL](../cog_guide/#version-dsl)
+    * [User guide -> Automatic Versioning](../guide/#auto-bump)
+    * [User guide -> Pre-bump hooks](../guide/#pre-bump-hooks)
+    * [User guide -> Version DSL](../guide/#version-dsl)
 
 ### `post_bump_hooks`
 
@@ -74,9 +74,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Automatic Versioning](../cog_guide/#auto-bump)
-    * [Cog guide -> Post-bump hooks](../cog_guide/#post-bump-hooks)
-    * [Cog guide -> Version DSL](../cog_guide/#version-dsl)
+    * [User guide -> Automatic Versioning](../guide/#auto-bump)
+    * [User guide -> Post-bump hooks](../guide/#post-bump-hooks)
+    * [User guide -> Version DSL](../guide/#version-dsl)
 
 ### `bump_profiles` 
 
@@ -101,11 +101,11 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Automatic Versioning](../cog_guide/#auto-bump)
-    * [Cog guide -> Post-bump hooks](../cog_guide/#post-bump-hooks)
-    * [Cog guide -> Pre-bump hooks](../cog_guide/#pre-bump-hooks)
-    * [Cog guide -> Version DSL](../cog_guide/#version-dsl)
-    * [Cog guide -> Bump profiles](../cog_guide/cog_guide/#bump-profiles)
+    * [User guide -> Automatic Versioning](../guide/#auto-bump)
+    * [User guide -> Post-bump hooks](../guide/#post-bump-hooks)
+    * [User guide -> Pre-bump hooks](../guide/#pre-bump-hooks)
+    * [User guide -> Version DSL](../guide/#version-dsl)
+    * [User guide -> Bump profiles](../guide/guide/#bump-profiles)
 
 ## Changelog
 
@@ -122,8 +122,8 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Automatic Versioning](../cog_guide/#auto-bump)
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
+    * [User guide -> Automatic Versioning](../guide/#auto-bump)
+    * [User guide -> Changelog](../guide/#changelogs)
 
 ### `template`
 
@@ -141,9 +141,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
-    * [Cog guide -> Built-in templates](../cog_guide/#buiLt-in-templates)
-    * [Cog guide -> Custom templates](../cog_guide/#custom-templates)
+    * [User guide -> Changelog](../guide/#changelogs)
+    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
+    * [User guide -> Custom templates](../guide/#custom-templates)
 
 ### `remote`
 
@@ -161,9 +161,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
-    * [Cog guide -> Built-in templates](../cog_guide/#buiLt-in-templates)
-    * [Cog guide -> Custom templates](../cog_guide/#custom-templates)
+    * [User guide -> Changelog](../guide/#changelogs)
+    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
+    * [User guide -> Custom templates](../guide/#custom-templates)
 
 ### `repository`
 
@@ -180,9 +180,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
-    * [Cog guide -> Built-in templates](../cog_guide/#buiLt-in-templates)
-    * [Cog guide -> Custom templates](../cog_guide/#custom-templates)
+    * [User guide -> Changelog](../guide/#changelogs)
+    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
+    * [User guide -> Custom templates](../guide/#custom-templates)
 
 ### `owner`
 
@@ -199,9 +199,9 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
-    * [Cog guide -> Built-in templates](../cog_guide/#buiLt-in-templates)
-    * [Cog guide -> Custom templates](../cog_guide/#custom-templates)
+    * [User guide -> Changelog](../guide/#changelogs)
+    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
+    * [User guide -> Custom templates](../guide/#custom-templates)
 
 ### `authors`
 
@@ -225,8 +225,8 @@ The config reference list all value that can be set in the `cog.toml` file at th
     ```
 - Also see:
 
-    * [Cog guide -> Changelog](../cog_guide/#changelogs)
-    * [Cog guide -> Built-in templates](../cog_guide/#buiLt-in-templates)
+    * [User guide -> Changelog](../guide/#changelogs)
+    * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
 
 
 

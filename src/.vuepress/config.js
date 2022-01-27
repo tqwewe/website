@@ -40,12 +40,8 @@ module.exports = {
         lastUpdated: true,
         navbar: [
             {
-                link: '/coco_guide/',
-                text: 'Coco guide',
-            },
-            {
-                link: '/cog_guide/',
-                text: 'Cog guide',
+                link: '/guide/',
+                text: 'User guide',
             },
             {
                 link: '/ci_cd/',
@@ -64,12 +60,8 @@ module.exports = {
         // pages under different sub paths will use different sidebar
         sidebar: [
             {
-                link: '/coco_guide/',
-                text: 'Coco guide',
-            },
-            {
-                link: '/cog_guide/',
-                text: 'Cog guide',
+                link: '/guide/',
+                text: 'User guide',
             },
             {
                 link: '/ci_cd/',
