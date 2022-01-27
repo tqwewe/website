@@ -38,7 +38,7 @@ pacman -S cocogitto
 
 ## Shell completions
 
-Before getting started you might want to install shell completions for `cog` and `coco` commands.
+Before getting started you might want to install shell completions (Note that this is not needed for the official archlinux package).
 Supported shells are `bash`, `elvish`, `fish` and `zsh`.
 
 Example installing completions:
@@ -46,27 +46,23 @@ Example installing completions:
 ```sh
 # Bash
 cog generate-completions bash > ~/.local/share/bash-completion/completions/cog
-coco generate-completions bash > ~/.local/share/bash-completion/completions/coco
 
 # Bash (macOS/Homebrew)
 cog generate-completions bash > $(brew --prefix)/etc/bash_completion.d/cog.bash-completion
-coco generate-completions bash > $(brew --prefix)/etc/bash_completion.d/coco.bash-completion
 
 # Fish
 mkdir -p ~/.config/fish/completions
 cog generate-completions fish > ~/.config/fish/completions/cog.fish
-coco generate-completions fish > ~/.config/fish/completions/coco.fish
 
 # Zsh
 cog generate-completions zsh > ~/.zfunc/_cog
-coco generate-completions zsh > ~/.zfunc/_coco
 ```
 
 ## Introduction
 
-Cocogitto comes with two standalone binaries : `coco` and `cog`.
+Cocogitto comes with a single binary named `cog`.
 
-Both of them and their subcommands have a `--help`  to display options and usage :
+Use the `--help`  to display options and usage about a specific subcommand :
 
 ```shell
 cog --help
@@ -75,11 +71,11 @@ cog changelog --help
 ```
 
 Note that if you do not care about automatic release, changelog generation and just want
-to create conventional commit message you can jump to the [conventional commits section](./coco_guide).
+to create conventional commit message you can jump to the [conventional commits section](./guide/#conventional_commits).
 
-## Conventional commits  with `coco`
+## Conventional commits
 
-`coco` is primarily meant to be used as a replacement for the `git commit` command.
+`cog commit` is primarily meant to be used as a replacement for the `git commit` command.
 It will produce commits with messages respecting the conventional commits specification with
 little effort.
 
@@ -89,26 +85,26 @@ little effort.
 # With git commit
 git commit -m "feat: implement the parser specification"
 
-# With coco
-coco feat "implement the parser specification"
+# With cocogitto
+cog commit feat "implement the parser specification"
 ```
 
-Using `coco` while working on a project using conventional commits is less verbose than good old git cli and prevent
+Using `cog commit` while working on a project using conventional commits is less verbose than good old git cli and prevent
 typos and common mistake when writing conventional commit messages.
 
-See [Coco guide](./coco_guide) for more information.
+See [User guide -> Conventional commits](./guide/#conventional_commits) for more information.
 
 
-## Repository management with `cog`
+## Repository management
 
-While local commit are made with the `coco` binary, `cog` is meant to manage your repository both locally and in a
-CI context. For an in depth guide on how to use it see [Cog guide](./cog_guide).
+While local commit are made with the `cog commit` command, other `cog` subcommands are meant to manage your repository 
+both locally and in a CI context. For an in depth guide on how to use it see [User guide](./guide).
 
 ## GitHub integration
 
 ### GitHub Action
 
-Anything you can do with `cog` and `coco` can be done in your CI pipeline with [cocogitto-action](https://github.com/cocogitto/cocogitto-action). 
+Anything you can do with `cog` can be done in your CI pipeline with [cocogitto-action](https://github.com/cocogitto/cocogitto-action). 
 
 See [Github integration -> GitHub action](./ci_cd/#github-action) for more info.
 

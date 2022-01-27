@@ -77,12 +77,12 @@ You might also want to use a dedicated GitHub account to perform the release, th
 :::
 
 Also see:
-* [Cog guide -> Cog check](../cog_guide/#check-commit-history)
+* [User guide -> Cog check](../guide/#check-commit-history)
 
 ### GitHub release changelog
 
 Depending on the options provided the action will run check and/or create a release but if you need to perform some custom steps
-you can directly use `coco` and `cog`. 
+you can directly use `cog`. 
 
 ```yaml
 on:
@@ -115,7 +115,7 @@ jobs:
 ```
 
 Also see:
-* [Cog guide -> Automatic Versioning](../cog_guide/#auto-bump)
+* [User guide -> Automatic Versioning](../guide/#auto-bump)
 
 
 Note that you can disable the `check` option if needed.
