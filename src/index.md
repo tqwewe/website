@@ -36,6 +36,12 @@ cargo install cocogitto
 pacman -S cocogitto
 ```
 
+### Nixos
+
+```shell script
+nix-env -iA nixos.cocogitto
+```
+
 ## Shell completions
 
 Before getting started you might want to install shell completions for `cog` and `coco` commands.
