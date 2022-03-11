@@ -678,7 +678,7 @@ post_bump_hooks = [
     "git checkout develop",
     "git rebase master",
     "mvn versions:set -DnewVersion={{version+minor-SNAPSHOT}}",
-    "coco chore \"bump snapshot to {{version+1minor-SNAPSHOT}}\"",
+    "cog commit chore \"bump snapshot to {{version+1minor-SNAPSHOT}}\"",
     "git push",
 ]
 ```
