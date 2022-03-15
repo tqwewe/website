@@ -756,6 +756,20 @@ pre_bump_hooks = [
 ```
 :::
 
+### Branch whitelist
+
+It is a common practice to bump always from the same set of branches. For instance, you might want to allow bumping only
+on branch `main` and branches prefixed with `release/`. 
+
+To do so add the following to your `cog.toml` : 
+
+```toml
+branch_whitelist = [
+  "main",
+  "release/**"
+]
+```
+
 ### Bump hook recipes
 
 #### Cargo library projects

@@ -4,19 +4,32 @@ The config reference list all value that can be set in the `cog.toml` file at th
 
 ## General
 
-### `tag_prefix` 
-    
+### `tag_prefix`
+
 - Type: `String`
 - Optional: `true`
 - Description: set a tag prefix value for cocogitto. For instance if you have a `v` as a tag prefix, cocogitto will
-    generate version starting with `v` and commands like `cog changelog` will pick only those versions. 
-- Example: 
+  generate version starting with `v` and commands like `cog changelog` will pick only those versions.
+- Example:
     ```toml
     tag_prefix = "v"
     ```
+- Also see:
+
+  [User guide -> Tag prefix](../guide/#tag-prefix)
+
+### `branch_whitelist` 
+    
+- Type: `Array<String>`
+- Optional: `true`
+- Description: A list of glob patterns to allow bumping only on matching branches. 
+- Example: 
+    ```toml
+    branch_whitelist = [ "main", "release/**" ]
+    ```
 - Also see: 
 
-    [User guide -> Tag prefix](../guide/#tag-prefix)
+    [User guide -> Branch whitelist](../guide/#branch-whitelist)
 
 ### `commit_types`
 
