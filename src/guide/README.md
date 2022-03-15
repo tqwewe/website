@@ -166,6 +166,21 @@ release = { changelog_title = "Releases" }
 
 The above config would generate a `cog commit hotfix` and `cog commit release` subcommands following the same structure as the default ones.
 
+### Deal with merge commits
+
+By default, git will write the following message to merge commit : `Merge my 'branch'`. These merge commits do not respect 
+the Conventional Commits specification, and we strongly advise avoiding them by setting the following in your `.gitconfig` : 
+
+```toml
+[merge]
+  ff = only
+```
+
+That said you can simply make Cocogitto ignore merge commits by setting the following in your `cog.toml`: 
+```toml
+ignore_merge_commits = true
+```
+
 ## Check commit history
 
 Running `cog check` will check your commit history against the conventional commit specification :

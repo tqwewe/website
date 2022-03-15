@@ -18,6 +18,20 @@ The config reference list all value that can be set in the `cog.toml` file at th
 
     [User guide -> Tag prefix](../guide/#tag-prefix)
 
+### `ignore_merge_commits`
+
+- Type: `boolean`
+- Optional: `true`
+- Default: `false`
+- Description: whether to ignore or to lint merge commits.
+- Example:
+    ```toml
+    ignore_merge_commits = true
+    ```
+- Also see:
+
+  [User guide -> Deal with merge commit](../guide/#deal-with-merge-commit)
+
 ### `commit_types`
 
 - Type: `Hashmap<String, ChangelogTitle>`
