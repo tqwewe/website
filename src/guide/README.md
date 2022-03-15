@@ -677,7 +677,7 @@ post_bump_hooks = [
 ::: danger
 There is no rollback procedure for post-bump hook, on failure cog will abort and leave the repository
 in an undefined state. 
-We are working on allowing user to define there rollback procedures but it is not there yet. 
+We are working on allowing user to define there rollback procedures, but it is not there yet. 
 :::
 
 #### Version DSL
@@ -748,28 +748,6 @@ pre_bump_hooks = [
     """,
 ]
 ```
-
-::: warning
-Hooks are run in isolation therefore, **you need to spawn a sub-shell to be able to 
-access your shell environment** :
-
-```toml
-pre_bump_hooks = [ "echo $HOME" ] # This will print "$HOME"
-```
-
-```toml
-pre_bump_hooks = [ "sh -c \"echo $HOME\"" ] # This works
-```
-You can use the ```"""``` syntax to automatically escape quotes: 
-
-```toml
-pre_bump_hooks = [
-  """
-    sh -c "echo $HOME"
-    """,
-]
-```
-:::
 
 ### Branch whitelist
 
