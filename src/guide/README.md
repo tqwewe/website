@@ -828,6 +828,30 @@ post_bump_hooks = [
 ]
 ```
 
+#### Java Maven projects
+
+A recipe for Java Maven projects.
+Notably, the version bump is also included in the `pom.xml` project manifest  by running `mvn versions:set`
+and then staging the change before creating the bump commit.
+
+You can also run `mvn deploy` if this phase is configured in your `pom.xml`.
+
+Hooks:
+
+```toml
+pre_bump_hooks = [
+  "mvn versions:set -DnewVersion={{version}}",
+  "mvn clean package",
+]
+
+post_bump_hooks = [
+  "mvn deploy", # Optional
+  "git push origin {{version}}",
+  "git push"
+]
+
+```
+
 ## Tag prefix
 
 It is common to use a tag prefix when creating version in your repository. This is described in the [SemVer specification
