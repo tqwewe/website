@@ -114,7 +114,7 @@ The config reference list all value that can be set in the `cog.toml` file at th
   a profile can be used with the `cog bump --hook-profile <profile_name>` flag.
 - Example:
     ```toml
-    [bump_profoiles.hotfix]
+    [bump_profiles.hotfix]
     pre_bump_hooks = [
         "cargo build --release",
         "cargo fmt --all",
