@@ -592,6 +592,23 @@ cog bump --major --pre "beta.1"
 i.e. it will never do an auto bump to the `1.0.0` version, even if there are breaking changes.
 That way, you can keep adding features in the development stage and decide yourself, when your API is stable.
 
+#### Dry run
+
+If you just need to get the next version number without performing the automatic bump use the `--dry-run` flag : 
+
+```shell
+cog bump --dry-run --auto 
+```
+
+:::tip
+The `dry-run` flag can be helpful when writing shell scritps using cocogitto. Since only the version number will 
+output to stdout so you can do the following: 
+
+```shell
+VERSION=$(cog bump --dry-run --auto) # -> VERSION=1.0.0
+```
+:::
+
 ### Bump hooks
 
 #### Pre bump hooks
