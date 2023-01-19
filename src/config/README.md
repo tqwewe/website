@@ -255,8 +255,143 @@ The config reference list all value that can be set in the `cog.toml` file at th
     * [User guide -> Changelog](../guide/#changelogs)
     * [User guide -> Built-in templates](../guide/#buiLt-in-templates)
 
+## Mono-repository config
 
+### `monorepo_version_separator`
 
+- Type: `String`
+- Optional: `true`
+- Description: set a package tag separator. For instance if you have a `-` as package separator, cocogitto will
+  generate monorepo package version starting with the package name followed by the optional prefix and package version (ex: `my-package-v1.0.0`)
+- Example:
+    ```toml
+    monorepo_version_separator = "-"
+    ```
+### `pre_package_bump_hooks`
+
+- Type: `Array<String>`
+- Optional: `true`
+- Description: an array of command executed before every package bump.
+- Example:
+    ```toml
+    pre_bump_hooks = [
+        "cargo build --release",
+        "cargo fmt --all",
+        "cargo set-version {{version}}",
+    ]
+    ```
+### `post_package_bump_hooks`
+
+- Type: `Array<String>`
+- Optional: `true`
+- Description: an array of command executed after every package bump.
+- Example:
+    ```toml
+    pre_bump_hooks = [
+        "cargo build --release",
+        "cargo fmt --all",
+        "cargo set-version {{version}}",
+    ]
+    ```
+  
+## Mono-repository packages
+
+### `path`
+ 
+- Type: `String`
+- Optional: `false`
+- Description: set the package path.
+- Example:
+    ```toml
+    [packages]
+    my_package = { path = "packages/my_package" }
+   ```
+  
+### `changelog_path`
+
+- Type: `String`
+- Optional: `true`
+- Default: `{path}/CHANGELOG.md`
+- Description: overrides the default changelog path, allowing to set an absolute path.
+- Example:
+    ```toml
+    [packages]
+    my_package = { path = "packages/my_package", changelog_path = "changelogs/my_package.md" }
+   ```
+### `public_api`
+- Type: `boolean`
+- Optional: `true`
+- Default: `true`
+- Description: if set to false package will not trigger global version bump.
+- Example:
+    ```toml
+    [packages]
+    my_package = { path = "packages/my_package", public_api = false }
+    ```
+- Also see:
+
+  [User guide -> Package configuration](../guide/#packages-configuration)
+
+### `pre_bump_hooks`
+- Type: `Array<String>`
+- Optional: `true`
+- Description: an array of command to execute before a package bump.
+- Example:
+    ```toml
+    pre_bump_hooks = [
+        "cargo build --release",
+        "cargo fmt --all",
+        "cargo set-version {{version}}",
+    ]
+    ```
+
+- Also see:
+
+  * [User guide -> Automatic Versioning](../guide/#auto-bump)
+  * [User guide ->  Automatic versioning for monorepo](../guide/#packages-hooks)
+  * [User guide -> Post-bump hooks](../guide/#post-bump-hooks)
+  * [User guide -> Version DSL](../guide/#version-dsl)
+  
+### `post_bump_hooks`
+ 
+- Type: `Array<String>`
+- Optional: `true`
+- Description: an array of command to execute after a version bump.
+- Example:
+    ```toml
+    post_bump_hooks = [
+        "echo {{latest}} bumped to {{version}}",
+    ]
+    ```
+- Also see:
+
+  * [User guide -> Automatic Versioning](../guide/#auto-bump)
+  * [User guide ->  Automatic versioning for monorepo](../guide/#packages-hooks)
+  * [User guide -> Post-bump hooks](../guide/#post-bump-hooks)
+  * [User guide -> Version DSL](../guide/#version-dsl)
+  
+### `bump_profiles`
+
+- Type: `Hashmap<String, BumpProfile>`
+- Optional: `true`
+- Description: add additional per package [pre-bump](./#pre_bump_hooks) and [post-bump](./#post_bump_hooks) hooks profile.
+  a profile can be used with the `cog bump --hook-profile <profile_name>` flag.
+- Example:
+    ```toml
+    [packages.my-package]
+    path = "packages/my-package"
+    
+    [bump_profiles.hotfix]
+    pre_bump_hooks = [
+        "cargo build --release",
+        "cargo fmt --all",
+        "cargo set-version {{version}}",
+    ]
+    
+    post_bump_hooks = [
+        "cargo package",
+    ]
+    ```
 
 
 
