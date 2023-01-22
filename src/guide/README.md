@@ -798,6 +798,23 @@ perform the following actions:
 10. Execute per package post-bump hooks.
 11. Execute global post-bump hooks.
 
+### Mono-repository bump
+
+When using `cog bump` in a mono-repository context, it behaves slightly differently. 
+ 
+- `cog bump --auto`: creates a tag per changed packages since their respective latest releases and creates a global 
+    mono-repository tag.
+- `cog bump` used why manual bump flags such as `--minor`, `--major`, `--patch` or `--version` will only
+    create the monorepo version without bumping packages.
+
+- `cog bump --package=my_package --auto` creates a single package tag from the latest package tag
+
+:::tip
+We strongly advise to use automatic bump whenever possible. Manual bump should only be used when there are changes that 
+Cocogitto is not able to detect (ex: a breaking change occurring in a package via updating a global dependency).
+:::
+
+
 ### Packages configuration
 
 To set up mono-repository support you only need to define a list of package in your `cog.toml`
@@ -822,8 +839,8 @@ syntect-plugin = { path = "crates/syntect-plugin", public_api = false }
 ```
 
 :::tip
-If some of your packages does not belong to your project public API use `public_api = false` to prevent them
-from bumping the global project version. 
+If some of your packages does not belong to your project public API use `public_api = false` to prevent `--auto` bump 
+from updating the global project version. 
 :::
 
 #### Packages hooks
